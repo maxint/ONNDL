@@ -1,12 +1,12 @@
 function sel = selectFeature(AA_pos, AA_neg, param, total)
 % function P = selectFeature(AA_pos, AA_neg, param)
 % obtain the projection matrix P
-
+%
 % input --- 
 % AA_pos: the normalized positive templates
 % AA_neg: the normalized negative templates
 % param: the parameters for sparse representation
-
+%
 % output ---
 % P: the projection matrix
 

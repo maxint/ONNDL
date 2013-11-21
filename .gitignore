@@ -1,3 +1,5 @@
 *.mex*
 *.mat
 /imageUtility/interp2.dll
+
+/*.log

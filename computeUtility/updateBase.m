@@ -1,4 +1,6 @@
 function [A, B, U] = updateBase(A, B, U, Y, opt)
+% Update the template base
+
 	step = 0.2;
     maxIter = 100;
     tol = 1e-2;

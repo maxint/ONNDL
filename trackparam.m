@@ -44,9 +44,9 @@
 %    affsig(6) = skew angle
 clear all
 dataPath = 'e:\projects\object_tracking\data\datasets\';
-title = 'car11';
+title = '20131105_104041';
 
-switch (title)         
+switch (title)
 case 'davidin300';  p = [158 106 62 78 0];
     opt = struct('batchsize',5, 'affsig',[4,4,.005,.00,.001,.00]);
 case 'trellis70';  p = [200 100 45 49 0];
@@ -74,12 +74,23 @@ case 'basketball';  p = [210 260 40 100 0];
 case 'woman';  p = [222 165 35 95 0.0]; 
     opt = struct('batchsize',3, 'affsig',[4,4,.005,.000,.001,.000]);               
 case 'football';  p = [330 125 40 40 0.0];
-    opt = struct('batchsize',5, 'affsig',[4,4,.005,.000,.001,.000]); 
-otherwise;  error(['unknown title ' title]);
+    opt = struct('batchsize',5, 'affsig',[4,4,.005,.000,.001,.000]);
+otherwise;
+    % read input from init.txt
+    inputFile = sprintf('%s/%s/init.txt', dataPath, title);
+    if exist(inputFile, 'file')
+        p = dlmread(inputFile);
+        p(1) = p(1) + p(3)/2;
+        p(2) = p(2) + p(4)/2;
+        p(5) = 0; % first frame
+        opt = struct('batchsize',5, 'affsig',[4,4,.005,.00,.001,.00]);
+    else
+        error(['unknown title ' title]);        
+    end
 end
 
 % The number of particles used in particle filter
-opt.numsample = 400;
+opt.numsample = 400; % 400
 % Used in calculating particle confidence.
 opt.condenssig = 0.2;
 % The number of positive templates, Must be mutiple of 10!

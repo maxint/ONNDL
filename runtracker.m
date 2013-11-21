@@ -83,12 +83,12 @@ for f = 1:size(data,3)
   P = zeros(N,k);
   temp = find(sel);
   for i = 1:k
-      P(temp(i),i) = 1;
+    P(temp(i),i) = 1;
   end
   opt.P = P;
   if (size(wimgs,2) >= opt.batchsize )
-        [A, B, tmpl.basis(:, 1 : opt.maxbasis)] = updateBase(A, B, tmpl.basis(:, 1 : opt.maxbasis), wimgs, opt);        
-        wimgs = [];
+    [A, B, tmpl.basis(:, 1 : opt.maxbasis)] = updateBase(A, B, tmpl.basis(:, 1 : opt.maxbasis), wimgs, opt);        
+    wimgs = [];
   end
   
   duration = duration + toc;

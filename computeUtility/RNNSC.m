@@ -1,4 +1,12 @@
 function [V r res] = RNNSC(data, U, restart, V, useGpu)
+% Optimize the object function
+% INPUT:
+%   data - particles
+%   U - object template
+%   restart - generate initial V if needed
+% OUTPUT:
+%   V - coefficients for object templates
+
     c = 0;
     eps = 1e-2;
     if restart
